@@ -5,9 +5,9 @@ import { MoonLoader } from "react-spinners";
 // import classes from "./App.less";
 import assetMapping from "../../assets/assetMapping.json";
 // import Card from "../../elements/Card/Card";
-import Header from "../../components/Header/index.js";
-// import Footer from "../../components/Footer/Footer";
-// import SearchBar from "../../components/SearchBar/SearchBar";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import SearchBar from "../../components/SearchBar/SearchBar";
 // import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
 // import Preview from "../../components/Preview/Preview";
 // import ErrorNotice from "../../components/ErrorNotice/ErrorNotice";
@@ -16,7 +16,7 @@ const App = () => {
   const [Input, setInput] = useState("");
   const [weatherDetails, setWeatherDetails] = useState({
     temperature: null,
-    description: ''
+    description: ""
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -25,6 +25,10 @@ const App = () => {
     setWeatherDetails({});
     setError(false);
   };
+  let onSearch = e => {
+    setInput(e.target.value);
+  };
+  let goSearch = () => {};
   return (
     <div>
       <Header
@@ -33,6 +37,16 @@ const App = () => {
         }
         onClickHandler={tryAgain}
       />
+      <main>
+        <SearchBar
+          value={Input}
+          onChangeHandler={onSearch}
+          onClickHandler={goSearch}
+          error
+        />
+        {/* <Card /> */}
+      </main>
+      <Footer onClickHandler={tryAgain} />
     </div>
   );
 };
