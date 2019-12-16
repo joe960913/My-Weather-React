@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.less';
 import App from './container/App/App.js';
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css';

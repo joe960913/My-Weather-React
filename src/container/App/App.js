@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { MoonLoader } from "react-spinners";
 
- import styles from "./App.less";
+import styles from "./App.less";
 import assetMapping from "../../assets/assetMapping.json";
-// import Card from "../../elements/Card/Card";
+import Card from "../../elements/Card";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
-import { resolve } from "url";
-// import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
-// import Preview from "../../components/Preview/Preview";
-// import ErrorNotice from "../../components/ErrorNotice/ErrorNotice";
+import WeatherDetails from "../../components/WeatherDetails";
+import Preview from "../../components/Preview";
+import ErrorNotice from "../../components/ErrorNotice";
 
 const App = () => {
   const [Input, setInput] = useState("");
@@ -31,7 +30,7 @@ const App = () => {
   };
   let goSearch = () => {
     const city = Input;
-    const api_key = process.env.REACT_WEATHER_API_KEY;
+    const api_key = "adab95682ba390a869429c0983ed4df6";
     const api_url = "https://api.openweathermap.org/data/2.5/weather";
     const url = api_url + `?q=${city}&appid=${api_key}&units=metric`;
     new Promise(resolve => {
@@ -41,7 +40,7 @@ const App = () => {
       resolve();
     }).then(() => {
       fetch(url)
-        .then(res => res.json)
+        .then(res => res.json())
         .then(data => {
           if (data.cod === 200) {
             setWeatherDetails({
@@ -60,6 +59,14 @@ const App = () => {
         });
     });
   };
+  let cardContent = <Preview />;
+  if (loading) {
+    cardContent = <MoonLoader />;
+  } else if (error) {
+    cardContent = <ErrorNotice onClickHandler={tryAgain} />;
+  } else if (weatherDetails.temperature && weatherDetails.description !== "") {
+    cardContent = <WeatherDetails data={weatherDetails} />;
+  }
   return (
     <div className={styles.wrapper}>
       <Header
@@ -75,7 +82,7 @@ const App = () => {
           onClickHandler={goSearch}
           error={error}
         />
-        {/* <Card /> */}
+        <Card>{cardContent}</Card>
       </main>
       <Footer onClickHandler={tryAgain} />
     </div>
