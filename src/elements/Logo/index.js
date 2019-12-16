@@ -8,7 +8,7 @@ export default function Logo(props) {
   ];
   return (
     <div>
-      <h1 className={changeLogoScheme.join(' ')} onClick={props.clicked}>My weather</h1>
+      <h1 className={changeLogoScheme.join(' ')} onClick={props.clicked}>我的天气</h1>
     </div>
   );
 }

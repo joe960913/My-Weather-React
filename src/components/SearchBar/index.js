@@ -10,11 +10,11 @@ export default function SearchBar(props) {
         name={props.city}
         onChange={props.onChangeHandler}
         error={props.error}
-        placeholder='Enter a city'
-        label='Location'
+        placeholder='输入一个城市'
+        label='地区'
         value={props.value}
       />
-      <Button goSearch={props.onClickHandler} name='searchSubmit' type='submit' position='onForm'>Search</Button>
+      <Button goSearch={props.onClickHandler} name='searchSubmit' type='submit' position='onForm'>查询</Button>
     </div>
   );
 }

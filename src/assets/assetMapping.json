@@ -22,6 +22,7 @@
         "Clouds": "Clouds.svg",
         "Clear": "Clear.svg",
         "Snow": "Snow.svg",
-        "Thunderstorm": "Thunderstorm.svg"
+        "Thunderstorm": "Thunderstorm.svg",
+        "Fog":"Fog.svg"
     }
 }
