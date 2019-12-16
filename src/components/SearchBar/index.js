@@ -14,7 +14,7 @@ export default function SearchBar(props) {
         label='Location'
         value={props.value}
       />
-      <Button goSearch={props.onClickHandler} name='searchSubmit' tyoe='submit' position='onForm'>Search</Button>
+      <Button goSearch={props.onClickHandler} name='searchSubmit' type='submit' position='onForm'>Search</Button>
     </div>
   );
 }
